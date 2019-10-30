@@ -6,7 +6,7 @@
 
 all:	main	
 
-main:  main.o model.o
+main:  main.o model.o ticket.o
 	gcc -o $@ $^
 
 clean:
