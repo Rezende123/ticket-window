@@ -4,14 +4,15 @@
 #include "model.h"
 
 int main(void) {
-    tList * list = createList();
+    tLine * line = createLine();
 
     for (int i = 0; i < 5; i++)
     {
         tNode* node = createNode(i * 5);
         
-        insertNodeInList(list, node);
+        insertNodeInLine(line, node);
     }
     
-    printList(*list);
+    removeNodeInLine(line);
+    printLine(*line);
 }

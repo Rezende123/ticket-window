@@ -12,6 +12,16 @@ tList * createList() {
     return list;
 }
 
+tLine * createLine() {
+    tLine * line = malloc(sizeof(tLine));
+
+    line->first = NULL;
+    line->last = NULL;
+    line->amount = 0;
+
+    return line;
+}
+
 tNode * createNode(int content) {
     tNode * node = malloc(sizeof(tNode));
 
@@ -21,6 +31,7 @@ tNode * createNode(int content) {
     return node;
 }
 
+// LIST
 void insertNodeInList(tList * list, tNode * node) {
     if (list == NULL) return;
 
@@ -40,7 +51,6 @@ void insertNodeInList(tList * list, tNode * node) {
     currentNode->nextNode = node;
     list->amountNodes++;
 }
-
 bool removeNodeInList(tList * list, int content) {
     tNode * currentNode = list->initialNode;
     tNode * backNode;
@@ -60,7 +70,6 @@ bool removeNodeInList(tList * list, int content) {
 
     return false;
 }
-
 void printList(tList list) {
     printf("\n\n======= LIST =======\n");
     tNode * node = list.initialNode;
@@ -71,6 +80,38 @@ void printList(tList list) {
         printf("[%d] - %d\n", count, node->content);
         node = node->nextNode;
         count++;
+    }   
+}
+
+// LINE
+void insertNodeInLine(tLine * line, tNode * node) {
+    if (line == NULL) return;
+
+    if (line->first == NULL) {
+        line->first = line->last = node;
+        return;
     }
-    
+
+    tNode * _node = line->last;
+    line->last = _node->nextNode = node;
+    line->amount++;
+}
+void removeNodeInLine(tLine * line) {
+    if (line == NULL || line->first == NULL) return;
+
+    tNode * node = line->first;
+    line->first = node->nextNode;
+    line->amount--;
+}
+void printLine(tLine line) {
+    printf("\n\n======= LINE =======\n");
+    tNode * node = line.first;
+    int count = 1;
+
+    while (node != NULL)
+    {
+        printf("[%d] - %d\n", count, node->content);
+        node = node->nextNode;
+        count++;
+    }
 }
