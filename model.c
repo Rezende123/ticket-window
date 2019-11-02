@@ -125,19 +125,8 @@ void printLine(tLine line) {
         count++;
     }
 }
-void passToFrontLine(tLine * line, int content) {
-    tNode * currentNode = line->first;
-    tNode * backNode;
-
-    while (currentNode->nextNode != NULL && currentNode->content != content)
-    {
-        backNode = currentNode;
-        currentNode = currentNode->nextNode;
-    }
-    
-    if (currentNode->content == content) {
-        backNode->nextNode = currentNode->nextNode;
-        currentNode->nextNode = line->first;
-        line->first = currentNode;
-    }
+void passToFrontLine(tLine * line, tNode * node, tNode * backNode) {
+    backNode->nextNode = node->nextNode;
+    node->nextNode = line->first;
+    line->first = node;
 }

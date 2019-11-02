@@ -31,4 +31,4 @@ tLine * createLine();
 void insertNodeInLine(tLine * line, tNode * node);
 void removeNodeInLine(tLine * line);
 void printLine(tLine line);
-void passToFrontLine(tLine * line, int content);
+void passToFrontLine(tLine * line, tNode * node, tNode * backNode);

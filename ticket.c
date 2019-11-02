@@ -46,12 +46,17 @@ void buildScenario(tLine * lineCustomers, tList * listServiceWindow) {
 
 void orderAttendance(tLine * lineCustomers) {
     tNode * node = lineCustomers->first;
+    tNode * backNode = lineCustomers->first;
 
     while (node != NULL)
     {
-        if (node->content < 100) {
-            passToFrontLine(lineCustomers, node->content);
+        if (node->content < 100 && 
+            node != lineCustomers->first &&
+            backNode->content > 100
+            ) {
+            passToFrontLine(lineCustomers, node, backNode);
         }
+        backNode = node;
         node = node->nextNode;
     }
     printf("ORDENED LINE");
