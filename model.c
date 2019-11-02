@@ -77,7 +77,12 @@ void printList(tList list) {
 
     while (node != NULL)
     {
-        printf("[%d] - %d\n", count, node->content);
+        char * status = "AVALIABLE";
+        
+        if (node->content < 0) {
+            status = "UNAVALIABLE";
+        }
+        printf("[%s]\t[%d] - %d\n", status, count, node->content);
         node = node->nextNode;
         count++;
     }   
@@ -116,5 +121,21 @@ void printLine(tLine line) {
         printf("\t[%d] - %d\n", count, node->content);
         node = node->nextNode;
         count++;
+    }
+}
+void passToFrontLine(tLine * line, int content) {
+    tNode * currentNode = line->first;
+    tNode * backNode;
+
+    while (currentNode->nextNode != NULL && currentNode->content != content)
+    {
+        backNode = currentNode;
+        currentNode = currentNode->nextNode;
+    }
+    
+    if (currentNode->content == content) {
+        backNode->nextNode = currentNode->nextNode;
+        currentNode->nextNode = line->first;
+        line->first = currentNode;
     }
 }

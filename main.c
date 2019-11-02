@@ -7,9 +7,10 @@
 int main(void) {
     srand((unsigned)(time(NULL)));
 
-    tLine * line = createLine();
-    makeLineCustomers(line);
-    printf("\n\n");
-    tList * list = createList();
-    makeListServiceWindow(list);
+    tLine * lineCustomers = createLine();
+    tList * listServiceWindow = createList();
+    tList * listAttendence = createList();
+
+    buildScenario(lineCustomers, listServiceWindow);
+    attendance(lineCustomers, listServiceWindow);
 }

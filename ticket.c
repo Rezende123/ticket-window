@@ -24,6 +24,7 @@ void makeLineCustomers(tLine * line) {
     addClientInLine(line, true);
     printf("FILA");
     printLine(*line);
+    printf("\n\n");
 }
 
 void makeListServiceWindow(tList * list) {
@@ -35,4 +36,28 @@ void makeListServiceWindow(tList * list) {
 
     printf("CAIXAS");
     printList(*list);    
+    printf("\n\n");
+}
+
+void buildScenario(tLine * lineCustomers, tList * listServiceWindow) {
+    makeLineCustomers(lineCustomers);
+    makeListServiceWindow(listServiceWindow);
+}
+
+void orderAttendance(tLine * lineCustomers) {
+    tNode * node = lineCustomers->first;
+
+    while (node != NULL)
+    {
+        if (node->content < 100) {
+            passToFrontLine(lineCustomers, node->content);
+        }
+        node = node->nextNode;
+    }
+    printf("FILA ORDENADA");
+    printLine(*lineCustomers);
+}
+
+void attendance(tLine * lineCustomers, tList * listServiceWindow) {
+    orderAttendance(lineCustomers);
 }
