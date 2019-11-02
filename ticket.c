@@ -8,7 +8,7 @@
 void addClientInLine(tLine * line, bool isSpecial) {
     int range = (isSpecial) ? 100 : 1000;
 
-    int ticket = rand() % range; 
+    int ticket = rand() % (range + 1 - range/10) + range/10; 
     
     tNode * client = createNode(ticket);
     
