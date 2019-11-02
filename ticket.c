@@ -22,7 +22,7 @@ void makeLineCustomers(tLine * line) {
     }
     
     addClientInLine(line, true);
-    printf("FILA");
+    printf("LINE");
     printLine(*line);
     printf("\n\n");
 }
@@ -34,7 +34,7 @@ void makeListServiceWindow(tList * list) {
         insertNodeInList(list, window);
     }
 
-    printf("CAIXAS");
+    printf("WINDOW");
     printList(*list);    
     printf("\n\n");
 }
@@ -54,10 +54,28 @@ void orderAttendance(tLine * lineCustomers) {
         }
         node = node->nextNode;
     }
-    printf("FILA ORDENADA");
+    printf("ORDENED LINE");
     printLine(*lineCustomers);
 }
 
 void attendance(tLine * lineCustomers, tList * listServiceWindow) {
     orderAttendance(lineCustomers);
+
+    tNode * window = listServiceWindow->initialNode;
+    tNode * customer = lineCustomers->first;
+
+    while (window != NULL && customer != NULL)
+    {
+        if (window->customer == NULL) {
+            window->customer = customer;
+            customer = customer->nextNode;
+            removeNodeInLine(lineCustomers);
+        }
+
+        window = window->nextNode;
+    }
+    
+    printf("\nWINDOW IN ATTENDMENT");
+    printList(*listServiceWindow);   
+    printf("\n\n");
 }

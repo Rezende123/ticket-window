@@ -3,7 +3,9 @@
 typedef struct node
 {
     int content;
-    struct node* nextNode;
+    struct node * nextNode;
+
+    struct node * customer;  
 } tNode;
 
 typedef struct list

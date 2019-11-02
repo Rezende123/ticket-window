@@ -70,6 +70,8 @@ bool removeNodeInList(tList * list, int content) {
 
     return false;
 }
+
+//TODO customerTicket == 0 significa guichê disponível
 void printList(tList list) {
     printf("\n======= LIST =======\n");
     tNode * node = list.initialNode;
@@ -77,12 +79,12 @@ void printList(tList list) {
 
     while (node != NULL)
     {
-        char * status = "AVALIABLE";
+        int customerTicket = 0;
         
-        if (node->content < 0) {
-            status = "UNAVALIABLE";
+        if (node->customer != NULL) {
+            customerTicket = node->customer->content;
         }
-        printf("[%s]\t[%d] - %d\n", status, count, node->content);
+        printf("[%d][%d] - %d\n", customerTicket, count, node->content);
         node = node->nextNode;
         count++;
     }   

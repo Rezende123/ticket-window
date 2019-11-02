@@ -13,4 +13,6 @@ int main(void) {
 
     buildScenario(lineCustomers, listServiceWindow);
     attendance(lineCustomers, listServiceWindow);
+    printf("LINE");
+    printLine(*lineCustomers);
 }
