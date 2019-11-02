@@ -6,9 +6,9 @@
 
 // TODO Clientes especiais Devem ter números de 2 dígitos
 void addClientInLine(tLine * line, bool isSpecial) {
-    int range = (isSpecial) ? 100 : 1000;
+    int range = (isSpecial) ? 99 : 999;
 
-    int ticket = rand() % (range + 1 - range/10) + range/10; 
+    int ticket = rand() % (range + 1 - ((range/10) + 1)) + ((range/10) + 1); 
     
     tNode * client = createNode(ticket);
     
