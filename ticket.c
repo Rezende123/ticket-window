@@ -3,7 +3,6 @@
 #include <stdbool.h>
 #include "model.h"
 
-
 // TODO Clientes especiais Devem ter números de 2 dígitos
 void addClientInLine(tLine * line, bool isSpecial) {
     int range = (isSpecial) ? 99 : 999;
@@ -16,7 +15,7 @@ void addClientInLine(tLine * line, bool isSpecial) {
 }
 
 void makeLineCustomers(tLine * line, int sizeLineCustomers) {
-    for (int i = 0; i < sizeLineCustomers; i++)
+    for (int i = 1; i <= sizeLineCustomers; i++)
     {
         int sort = rand() % 10;
 
@@ -30,7 +29,7 @@ void makeLineCustomers(tLine * line, int sizeLineCustomers) {
 }
 
 void makeListServiceWindow(tList * list, int sizeListServiceWindow) {
-    for (int i = 0; i < sizeListServiceWindow; i++)
+    for (int i = 1; i <= sizeListServiceWindow; i++)
     {
         tNode * window = createNode(i);
         insertNodeInList(list, window);
@@ -57,6 +56,7 @@ void clearWindows(tList * list) {
     while (window != NULL)
     {
         window->customer = NULL;
+        window->content = abs(window->content);
         window = window->nextNode;
     }
 
@@ -91,7 +91,7 @@ void attendance(tLine * lineCustomers, tList * listServiceWindow) {
 
     while (window != NULL && customer != NULL)
     {
-        if (window->customer == NULL) {
+        if (window->customer == NULL && window->content >= 0) {
             window->customer = customer;
             customer = customer->nextNode;
             removeNodeInLine(lineCustomers);
@@ -103,4 +103,16 @@ void attendance(tLine * lineCustomers, tList * listServiceWindow) {
     printf("\nWINDOW IN ATTENDMENT");
     printList(*listServiceWindow);   
     printf("\n\n");
+}
+void blockWindow(tList * list, int windowContent) {
+    tNode * window = list->initialNode;
+
+    while (window != NULL && window->content != windowContent)
+    {
+        window = window->nextNode;
+    }
+
+    if (window->content == windowContent) {
+        window->content = windowContent * -1;
+    }
 }

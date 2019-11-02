@@ -8,3 +8,4 @@ void buildScenario(tLine * lineCustomers, tList * listServiceWindow, int sizeLin
 void orderAttendance(tLine * lineCustomers);
 void attendance(tLine * lineCustomers, tList * listServiceWindow);
 void clearWindows(tList * list);
+void blockWindow(tList * list, int windowContent);
