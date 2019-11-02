@@ -110,7 +110,10 @@ void printLine(tLine line) {
 
     while (node != NULL)
     {
-        printf("[%d] - %d\n", count, node->content);
+        if (node->content < 100) {
+            printf("[P]");
+        }
+        printf("\t[%d] - %d\n", count, node->content);
         node = node->nextNode;
         count++;
     }
