@@ -7,3 +7,4 @@ void makeListServiceWindow(tList * list, int sizeListServiceWindow);
 void buildScenario(tLine * lineCustomers, tList * listServiceWindow, int sizeLine, int sizeList);
 void orderAttendance(tLine * lineCustomers);
 void attendance(tLine * lineCustomers, tList * listServiceWindow);
+void clearWindows(tList * list);

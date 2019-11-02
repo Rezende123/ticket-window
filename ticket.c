@@ -51,6 +51,19 @@ void buildScenario(
     makeListServiceWindow(listServiceWindow, sizeList);
 }
 
+void clearWindows(tList * list) {
+    tNode * window = list->initialNode;
+
+    while (window != NULL)
+    {
+        window->customer = NULL;
+        window = window->nextNode;
+    }
+
+    printf("\nCLEAR WINDOWS");
+    printList(*list);
+}
+
 void orderAttendance(tLine * lineCustomers) {
     tNode * node = lineCustomers->first;
     tNode * backNode = lineCustomers->first;
@@ -66,7 +79,7 @@ void orderAttendance(tLine * lineCustomers) {
         backNode = node;
         node = node->nextNode;
     }
-    printf("ORDENED LINE");
+    printf("\nORDENED LINE");
     printLine(*lineCustomers);
 }
 

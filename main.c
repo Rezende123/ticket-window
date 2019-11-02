@@ -10,7 +10,11 @@ void legend() {
     printf("\n[P] - Priority customer");
     printf("\n\n\n");
 }
-
+void roundAttendance(tLine * lineCustomers, tList * listServiceWindow) {
+    attendance(lineCustomers, listServiceWindow);
+    
+    printLine(*lineCustomers);
+}
 int main(void) {
     srand((unsigned)(time(NULL)));
     legend();
@@ -27,8 +31,14 @@ int main(void) {
     printf("Digite a quantidade de guichês de atendimento: ");
     scanf("%d", &sizeListServiceWindow);
 
+    printf("\n===============================================\n");
+
     buildScenario(lineCustomers, listServiceWindow, sizeLineCustomers, sizeListServiceWindow);
-    attendance(lineCustomers, listServiceWindow);
-    printf("LINE");
-    printLine(*lineCustomers);
+
+    while (lineCustomers != NULL && lineCustomers->first != NULL)
+    {
+        roundAttendance(lineCustomers, listServiceWindow);
+        clearWindows(listServiceWindow);
+    }
+    
 }

@@ -111,6 +111,8 @@ void removeNodeInLine(tLine * line) {
     line->amount--;
 }
 void printLine(tLine line) {
+    if (line.first == NULL) return;
+    
     printf("\n======= LINE =======\n");
     tNode * node = line.first;
     int count = 1;
