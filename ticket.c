@@ -15,20 +15,22 @@ void addClientInLine(tLine * line, bool isSpecial) {
     insertNodeInLine(line, client);
 }
 
-void makeLineCustomers(tLine * line) {
-    for (int i = 0; i < 5; i++)
+void makeLineCustomers(tLine * line, int sizeLineCustomers) {
+    for (int i = 0; i < sizeLineCustomers; i++)
     {
-        addClientInLine(line, false);
+        int sort = rand() % 10;
+
+        bool isPeferencial = (sort%2 != 0);
+        addClientInLine(line, isPeferencial);
     }
-    
-    addClientInLine(line, true);
+
     printf("LINE");
     printLine(*line);
     printf("\n\n");
 }
 
-void makeListServiceWindow(tList * list) {
-    for (int i = 0; i < 3; i++)
+void makeListServiceWindow(tList * list, int sizeListServiceWindow) {
+    for (int i = 0; i < sizeListServiceWindow; i++)
     {
         tNode * window = createNode(i);
         insertNodeInList(list, window);
@@ -39,9 +41,14 @@ void makeListServiceWindow(tList * list) {
     printf("\n\n");
 }
 
-void buildScenario(tLine * lineCustomers, tList * listServiceWindow) {
-    makeLineCustomers(lineCustomers);
-    makeListServiceWindow(listServiceWindow);
+void buildScenario(
+    tLine * lineCustomers, 
+    tList * listServiceWindow,
+    int sizeLine,
+    int sizeList
+    ) {
+    makeLineCustomers(lineCustomers, sizeLine);
+    makeListServiceWindow(listServiceWindow, sizeList);
 }
 
 void orderAttendance(tLine * lineCustomers) {

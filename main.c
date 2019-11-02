@@ -19,7 +19,15 @@ int main(void) {
     tList * listServiceWindow = createList();
     tList * listAttendence = createList();
 
-    buildScenario(lineCustomers, listServiceWindow);
+    int sizeLineCustomers, sizeListServiceWindow;
+
+    printf("Digite a quantidade de clientes na fila: ");
+    scanf("%d", &sizeLineCustomers);
+
+    printf("Digite a quantidade de guichês de atendimento: ");
+    scanf("%d", &sizeListServiceWindow);
+
+    buildScenario(lineCustomers, listServiceWindow, sizeLineCustomers, sizeListServiceWindow);
     attendance(lineCustomers, listServiceWindow);
     printf("LINE");
     printLine(*lineCustomers);
