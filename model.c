@@ -71,7 +71,7 @@ bool removeNodeInList(tList * list, int content) {
     return false;
 }
 void printList(tList list) {
-    printf("\n\n======= LIST =======\n");
+    printf("\n======= LIST =======\n");
     tNode * node = list.initialNode;
     int count = 1;
 
@@ -104,7 +104,7 @@ void removeNodeInLine(tLine * line) {
     line->amount--;
 }
 void printLine(tLine line) {
-    printf("\n\n======= LINE =======\n");
+    printf("\n======= LINE =======\n");
     tNode * node = line.first;
     int count = 1;
 

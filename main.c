@@ -8,12 +8,8 @@ int main(void) {
     srand((unsigned)(time(NULL)));
 
     tLine * line = createLine();
-
-    for (int i = 0; i < 5; i++)
-    {
-        addClientInLine(line, false);
-    }
-    
-    addClientInLine(line, true);
-    printLine(*line);
+    makeLineCustomers(line);
+    printf("\n\n");
+    tList * list = createList();
+    makeListServiceWindow(list);
 }

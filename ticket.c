@@ -14,3 +14,25 @@ void addClientInLine(tLine * line, bool isSpecial) {
     
     insertNodeInLine(line, client);
 }
+
+void makeLineCustomers(tLine * line) {
+    for (int i = 0; i < 5; i++)
+    {
+        addClientInLine(line, false);
+    }
+    
+    addClientInLine(line, true);
+    printf("FILA");
+    printLine(*line);
+}
+
+void makeListServiceWindow(tList * list) {
+    for (int i = 0; i < 3; i++)
+    {
+        tNode * window = createNode(i);
+        insertNodeInList(list, window);
+    }
+
+    printf("CAIXAS");
+    printList(*list);    
+}
