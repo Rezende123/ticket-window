@@ -84,7 +84,7 @@ void printList(tList list) {
         if (node->customer != NULL) {
             customerTicket = node->customer->content;
         }
-        printf("[%d][%d] - %d\n", customerTicket, count, node->content);
+        printf("[%d]\t[%d]\t- %d\n", customerTicket, count, node->content);
         node = node->nextNode;
         count++;
     }   
@@ -122,7 +122,7 @@ void printLine(tLine line) {
         if (node->content < 100) {
             printf("[P]");
         }
-        printf("\t[%d] - %d\n", count, node->content);
+        printf("\t[%d]\t- %d\n", count, node->content);
         node = node->nextNode;
         count++;
     }
