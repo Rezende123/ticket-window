@@ -84,7 +84,10 @@ void printList(tList list) {
         if (node->customer != NULL) {
             customerTicket = node->customer->content;
         }
-        printf("[%d]\t[%d]\t- %d\n", customerTicket, count, node->content);
+
+        char* status = (node->content < 0) ? "CLOSE" : "OPEN";
+
+        printf("[%d]\t[%d]\t- [%s]\n", customerTicket, node->content, status);
         node = node->nextNode;
         count++;
     }   
