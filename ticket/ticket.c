@@ -34,7 +34,7 @@ void makeLineCustomers(tLine * line, int sizeLineCustomers) {
         addClientInLine(line, isPeferential);
     }
 
-    printf("LINE");
+    printf("FILA");
     printLine(*line);
     printf("\n\n");
 }
@@ -46,7 +46,7 @@ void makeListServiceWindow(tList * list, int sizeListServiceWindow) {
         insertNodeInList(list, window);
     }
 
-    printf("WINDOW");
+    printf("GUICHÊS");
     printList(*list);    
     printf("\n\n");
 }
@@ -71,7 +71,7 @@ void clearWindows(tList * list) {
         window = window->nextNode;
     }
 
-    printf("\nCLEAR WINDOWS");
+    printf("\nGUICHÊS REINICIADOS");
     printList(*list);
 }
 
@@ -90,7 +90,7 @@ void orderAttendance(tLine * lineCustomers) {
         backNode = node;
         node = node->nextNode;
     }
-    printf("\nORDENED LINE");
+    printf("\nFILA ORDENADA");
     printLine(*lineCustomers);
 }
 
@@ -111,7 +111,7 @@ void attendance(tLine * lineCustomers, tList * listServiceWindow) {
         window = window->nextNode;
     }
     
-    printf("\nWINDOW IN ATTENDMENT");
+    printf("\nGUICHÊS EM ATENDIMENTO");
     printList(*listServiceWindow);   
     printf("\n\n");
 }

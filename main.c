@@ -8,10 +8,10 @@
 #define SIZE_LIST_SERVICE_WINDOWS 5
 
 void legend() {
-    printf("\n***************Legend***************");
-    printf("\n[0] - Window available");
-    printf("\n[P] - Priority customer");
-    printf("\n[address negative] - Window block");
+    printf("\n***************LEGENDA***************");
+    printf("\n[P]\t- CLIENTE PRIORITÁRIO");
+    printf("\n[CLOSE]\t- GUICHÊ SUSPENSO");
+    printf("\n[OPEN]\t- GUICHÊ OPERANDO");
     printf("\n\n\n");
 }
 void roundAttendance(tLine * lineCustomers, tList * listServiceWindow) {
@@ -30,6 +30,7 @@ int main(void) {
 
     while (lineCustomers != NULL && lineCustomers->first != NULL && lineCustomers->amount > 0)
     {
+        printf("\n============================RODADA DE ATENDIMENTO============================\n");
         roundAttendance(lineCustomers, listServiceWindow);
         clearWindows(listServiceWindow);
         

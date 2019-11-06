@@ -73,7 +73,7 @@ bool removeNodeInList(tList * list, int content) {
 
 //TODO customerTicket == 0 significa guichê disponível
 void printList(tList list) {
-    printf("\n======= LIST =======\n");
+    printf("\n======= LISTA =======\n");
     tNode * node = list.initialNode;
     int count = 1;
 
@@ -116,7 +116,7 @@ void removeNodeInLine(tLine * line) {
 void printLine(tLine line) {
     if (line.first == NULL) return;
     
-    printf("\n======= LINE =======\n");
+    printf("\n======= FILA =======\n");
     tNode * node = line.first;
     int count = 1;
 
