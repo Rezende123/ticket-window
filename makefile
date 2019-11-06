@@ -2,17 +2,17 @@ CFLAGS= -c
 
 all:	main	
 
-main:  objects/main.o objects/model.o objects/ticket.o
-	gcc -o main objects/main.o objects/model.o objects/ticket.o
+main:  main.o model.o ticket.o
+	gcc -o main main.o model.o ticket.o
 
-objects/main.o: main.c
+main.o: main.c
 	gcc $(CFLAGS) main.c
 
-objects/model.o: model/model.c model/model.h
+model.o: model/model.c model/model.h
 	gcc $(CFLAGS) model/model.c
 
-objects/ticket.o: ticket/ticket.c ticket/ticket.h
+ticket.o: ticket/ticket.c ticket/ticket.h
 	gcc $(CFLAGS) ticket/ticket.c
 
 clean:
-	rm -f objects/main.o objects/model.o objects/ticket.o
+	rm -f main.o model.o ticket.o
