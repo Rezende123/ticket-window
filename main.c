@@ -4,6 +4,9 @@
 #include "time.h"
 #include "ticket/ticket.h"
 
+#define SIZE_LINE_CUSTOMERS 20
+#define SIZE_LIST_SERVICE_WINDOWS 5
+
 void legend() {
     printf("\n***************Legend***************");
     printf("\n[0] - Window available");
@@ -23,26 +26,15 @@ int main(void) {
     tLine * lineCustomers = createLine();
     tList * listServiceWindow = createList();
 
-    int sizeLineCustomers, sizeListServiceWindow;
-
-    printf("Digite a quantidade de clientes na fila: ");
-    scanf("%d", &sizeLineCustomers);
-
-    printf("Digite a quantidade de guichês de atendimento: ");
-    scanf("%d", &sizeListServiceWindow);
-
-    printf("\n===============================================\n");
-
-    buildScenario(lineCustomers, listServiceWindow, sizeLineCustomers, sizeListServiceWindow);
+    buildScenario(lineCustomers, listServiceWindow, SIZE_LINE_CUSTOMERS, SIZE_LIST_SERVICE_WINDOWS);
 
     while (lineCustomers != NULL && lineCustomers->first != NULL && lineCustomers->amount > 0)
     {
         roundAttendance(lineCustomers, listServiceWindow);
         clearWindows(listServiceWindow);
         
-        int window;
-        printf("Informe qual guichê será bloqueado para a próxima rodada: ");
-        scanf("%d", &window);
+        int window = sortByRange(SIZE_LIST_SERVICE_WINDOWS, 1);
+        printf("\nBOTÃO DO PÂNICO PARA O GUICHÊ: %d\n", window);
         
         blockWindow(listServiceWindow, window);
     }
