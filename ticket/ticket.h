@@ -1,5 +1,5 @@
 #include <stdbool.h>
-#include "model.h"
+#include "../model/model.h"
 
 void addClientInLine(tLine * line, bool isSpecial);
 void makeLineCustomers(tLine * line, int sizeLineCustomers);

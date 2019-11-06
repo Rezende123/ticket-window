@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
-#include "model.h"
+#include "../model/model.h"
 
 // TODO Clientes especiais Devem ter números de 2 dígitos
 void addClientInLine(tLine * line, bool isSpecial) {

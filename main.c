@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include "time.h"
-#include "ticket.h"
+#include "ticket/ticket.h"
 
 void legend() {
     printf("\n***************Legend***************");
