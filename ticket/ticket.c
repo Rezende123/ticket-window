@@ -5,21 +5,25 @@
 
 #define RATE_PREFERENTIAL 5
 
-// TODO Clientes especiais Devem ter números de 2 dígitos
-void addClientInLine(tLine * line, bool isSpecial) {
-    int range = (isSpecial) ? 99 : 999;
-
-    int ticket = rand() % (range + 1 - ((range/10) + 1)) + ((range/10) + 1); 
-    
-    tNode * client = createNode(ticket);
-    
-    insertNodeInLine(line, client);
+int sortByRange(int max_range, int min_range) {
+    return rand() % (max_range + 1 - (min_range + 1)) + (min_range + 1); 
 }
 
 bool sortPreferential() {
     int sort = rand() % 10;
     
     return (sort % RATE_PREFERENTIAL == 0);
+}
+
+// TODO Clientes especiais Devem ter números de 2 dígitos
+void addClientInLine(tLine * line, bool isSpecial) {
+    int range = (isSpecial) ? 99 : 999;
+
+    int ticket = sortByRange(range,(range/10));
+    
+    tNode * client = createNode(ticket);
+    
+    insertNodeInLine(line, client);
 }
 
 void makeLineCustomers(tLine * line, int sizeLineCustomers) {
