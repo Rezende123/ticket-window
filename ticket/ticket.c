@@ -3,6 +3,8 @@
 #include <stdbool.h>
 #include "../model/model.h"
 
+#define RATE_PREFERENTIAL 5
+
 // TODO Clientes especiais Devem ter números de 2 dígitos
 void addClientInLine(tLine * line, bool isSpecial) {
     int range = (isSpecial) ? 99 : 999;
@@ -14,13 +16,18 @@ void addClientInLine(tLine * line, bool isSpecial) {
     insertNodeInLine(line, client);
 }
 
+bool sortPreferential() {
+    int sort = rand() % 10;
+    
+    return (sort % RATE_PREFERENTIAL == 0);
+}
+
 void makeLineCustomers(tLine * line, int sizeLineCustomers) {
     for (int i = 1; i <= sizeLineCustomers; i++)
     {
-        int sort = rand() % 10;
 
-        bool isPeferencial = (sort%2 != 0);
-        addClientInLine(line, isPeferencial);
+        bool isPeferential = sortPreferential();
+        addClientInLine(line, isPeferential);
     }
 
     printf("LINE");
