@@ -24,6 +24,7 @@ void roundAttendance(tLine * lineCustomers, tList * listServiceWindow) {
 }
 int main(void) {
     srand((unsigned)(time(NULL)));
+    
     legend();
 
     tLine * lineCustomers = createLine();
@@ -31,6 +32,7 @@ int main(void) {
 
     buildScenario(lineCustomers, listServiceWindow, SIZE_LINE_CUSTOMERS, SIZE_LIST_SERVICE_WINDOWS);
 
+    resetTime();
     while (lineCustomers != NULL && lineCustomers->first != NULL && lineCustomers->amount > 0)
     {
         printf("\n============================RODADA DE ATENDIMENTO============================\n");
@@ -39,7 +41,7 @@ int main(void) {
         
         int window = sortByRange(SIZE_LIST_SERVICE_WINDOWS, 1);
         printf("\nBOTÃO DO PÂNICO PARA O GUICHÊ: %d\n", window);
-        
+
         blockWindow(listServiceWindow, window);
     }
     

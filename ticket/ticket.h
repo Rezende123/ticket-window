@@ -2,6 +2,8 @@
 #include "../model/model.h"
 
 int sortByRange(int max_range, int min_range);
+void resetTime();
+clock_t getTime();
 void addClientInLine(tLine * line, bool isSpecial);
 void makeLineCustomers(tLine * line, int sizeLineCustomers);
 void makeListServiceWindow(tList * list, int sizeListServiceWindow);

@@ -87,7 +87,7 @@ void printList(tList list) {
 
         char* status = (node->content < 0) ? "CLOSE" : "OPEN";
 
-        printf("[%d]\t[%d]\t- [%s]\n", customerTicket, node->content, status);
+        printf("[%d]\t[%d]\t[%.2lf]- [%s]\n", customerTicket, node->content, node->timeAttendence, status);
         node = node->nextNode;
         count++;
     }   
@@ -113,14 +113,18 @@ void removeNodeInLine(tLine * line) {
     line->first = node->nextNode;
     line->amount--;
 }
-char rateAttendence(int content) {
-    if (content < 100) {
+char rateAttendence(tNode * node) {
+    if (node->content < 100) {
+        node->timeAttendence = 100;
         return 'P';
-    } else if (content <= 333) {
+    } else if (node->content <= 333) {
+        node->timeAttendence = 150;
         return 'E';
-    } else if (content <= 666) {
+    } else if (node->content <= 666) {
+        node->timeAttendence = 200;
         return 'N';
     } else {
+        node->timeAttendence = 250;
         return 'C';
     }
 }
@@ -133,7 +137,7 @@ void printLine(tLine line) {
 
     while (node != NULL)
     {
-        char typeAttendence = rateAttendence(node->content);
+        char typeAttendence = rateAttendence(node);
         
         printf("[%c]\t[%d]\t- %d\n", typeAttendence, count, node->content);
         node = node->nextNode;

@@ -4,6 +4,7 @@
 #include "../model/model.h"
 
 #define RATE_PREFERENTIAL 5
+double timer;
 
 int sortByRange(int max_range, int min_range) {
     return rand() % (max_range + 1 - (min_range + 1)) + (min_range + 1); 
@@ -13,6 +14,14 @@ bool sortPreferential() {
     int sort = rand() % 10;
     
     return (sort % RATE_PREFERENTIAL == 0);
+}
+
+void resetTime() {
+    timer = clock();
+}
+clock_t getTime() {
+    printf("T %lf C %ld", timer, clock());
+    return clock() - timer;
 }
 
 // TODO Clientes especiais Devem ter números de 2 dígitos
@@ -66,10 +75,15 @@ void clearWindows(tList * list) {
 
     while (window != NULL)
     {
-        window->customer = NULL;
+        if (window->customer != NULL && window->customer->timeAttendence < window->timeAttendence) {
+            window->customer = NULL;
+            window->timeAttendence = 0;
+        }
         window->content = abs(window->content);
         window = window->nextNode;
     }
+
+    resetTime();
 
     printf("\nGUICHÊS REINICIADOS");
     printList(*list);
@@ -108,6 +122,12 @@ void attendance(tLine * lineCustomers, tList * listServiceWindow) {
             removeNodeInLine(lineCustomers);
         }
 
+        if (window->content >= 0) {
+            window->timeAttendence = getTime();
+        } else {
+            window->timeAttendence = 0;
+        }
+
         window = window->nextNode;
     }
     
@@ -123,7 +143,7 @@ void blockWindow(tList * list, int windowContent) {
         window = window->nextNode;
     }
 
-    if (window->content == windowContent) {
+    if (window->content == windowContent && window->customer == NULL) {
         window->content = windowContent * -1;
     }
 }
