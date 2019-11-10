@@ -113,6 +113,17 @@ void removeNodeInLine(tLine * line) {
     line->first = node->nextNode;
     line->amount--;
 }
+char rateAttendence(int content) {
+    if (content < 100) {
+        return 'P';
+    } else if (content <= 333) {
+        return 'E';
+    } else if (content <= 666) {
+        return 'N';
+    } else {
+        return 'C';
+    }
+}
 void printLine(tLine line) {
     if (line.first == NULL) return;
     
@@ -122,10 +133,9 @@ void printLine(tLine line) {
 
     while (node != NULL)
     {
-        if (node->content < 100) {
-            printf("[P]");
-        }
-        printf("\t[%d]\t- %d\n", count, node->content);
+        char typeAttendence = rateAttendence(node->content);
+        
+        printf("[%c]\t[%d]\t- %d\n", typeAttendence, count, node->content);
         node = node->nextNode;
         count++;
     }

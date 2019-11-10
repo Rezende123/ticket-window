@@ -10,6 +10,9 @@
 void legend() {
     printf("\n***************LEGENDA***************");
     printf("\n[P]\t- CLIENTE PRIORITÁRIO");
+    printf("\n[E]\t- ATENDIMENTO EXPRESSO");
+    printf("\n[N]\t- ATENDIMENTO NORMAL");
+    printf("\n[C]\t- ATENDIMENTO COMPLEXO");
     printf("\n[CLOSE]\t- GUICHÊ SUSPENSO");
     printf("\n[OPEN]\t- GUICHÊ OPERANDO");
     printf("\n\n\n");

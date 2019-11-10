@@ -31,4 +31,5 @@ tLine * createLine();
 void insertNodeInLine(tLine * line, tNode * node);
 void removeNodeInLine(tLine * line);
 void printLine(tLine line);
+char rateAttendence(int content);
 void passToFrontLine(tLine * line, tNode * node, tNode * backNode);
