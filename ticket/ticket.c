@@ -111,6 +111,8 @@ bool hasAttendence(tList * list) {
     return false;
 }
 void finaleAttendence(tList * list) {
+    printf("\nÚLTIMO ATENDIMENTO\n");
+    printf("|SENHA\t|GUICHÊ\t|TEMPO\n");
     while (hasAttendence(list))
     {
         tNode * window = list->initialNode;
@@ -119,15 +121,13 @@ void finaleAttendence(tList * list) {
         {
             if (window->customer != NULL &&
                 window->customer->timeAttendence < window->timeAttendence) {
-
+                printf("[%d]\t[%d]\t[%d]\n", window->customer->content, window->content, window->timeAttendence);
+                
                 window->customer = NULL;
                 window->timeAttendence = 0;
-                
-                printf("\nGUICHÊS EM ATENDIMENTO");
-                printList(*list);   
-                printf("\n\n");
+
             } else {
-                window->timeAttendence++;
+                window->timeAttendence += sortByRange(5,1);
             }
             window = window->nextNode;
         }
@@ -149,7 +149,7 @@ void attendance(tLine * lineCustomers, tList * listServiceWindow) {
         }
 
         if (window->content >= 0) {
-            window->timeAttendence++;
+            window->timeAttendence += 5;
         } else {
             window->timeAttendence = 0;
         }

@@ -5,7 +5,7 @@
 #include "ticket/ticket.h"
 
 #define SIZE_LINE_CUSTOMERS 20
-#define SIZE_LIST_SERVICE_WINDOWS 5
+#define SIZE_LIST_SERVICE_WINDOWS 10
 
 void legend() {
     printf("\n***************LEGENDA***************");
