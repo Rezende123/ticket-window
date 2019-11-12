@@ -2,8 +2,6 @@
 #include "../model/model.h"
 
 int sortByRange(int max_range, int min_range);
-void resetTime();
-clock_t getTime();
 void addClientInLine(tLine * line, bool isSpecial);
 void makeLineCustomers(tLine * line, int sizeLineCustomers);
 void makeListServiceWindow(tList * list, int sizeListServiceWindow);
@@ -12,3 +10,5 @@ void orderAttendance(tLine * lineCustomers);
 void attendance(tLine * lineCustomers, tList * listServiceWindow);
 void clearWindows(tList * list);
 void blockWindow(tList * list, int windowContent);
+bool hasAttendence(tList * list);
+void finaleAttendence(tList * list);

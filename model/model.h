@@ -4,7 +4,7 @@
 typedef struct node
 {
     int content;
-    double timeAttendence;
+    int timeAttendence;
     struct node * nextNode;
 
     struct node * customer;  

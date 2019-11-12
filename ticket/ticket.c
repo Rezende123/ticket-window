@@ -16,14 +16,6 @@ bool sortPreferential() {
     return (sort % RATE_PREFERENTIAL == 0);
 }
 
-void resetTime() {
-    timer = clock();
-}
-clock_t getTime() {
-    printf("T %lf C %ld", timer, clock());
-    return clock() - timer;
-}
-
 // TODO Clientes especiais Devem ter números de 2 dígitos
 void addClientInLine(tLine * line, bool isSpecial) {
     int range = (isSpecial) ? 99 : 999;
@@ -83,8 +75,6 @@ void clearWindows(tList * list) {
         window = window->nextNode;
     }
 
-    resetTime();
-
     printf("\nGUICHÊS REINICIADOS");
     printList(*list);
 }
@@ -107,6 +97,42 @@ void orderAttendance(tLine * lineCustomers) {
     printf("\nFILA ORDENADA");
     printLine(*lineCustomers);
 }
+bool hasAttendence(tList * list) {
+    tNode * window = list->initialNode;
+
+    while (window != NULL)
+    {
+        if (window->customer != NULL) {
+            return true;
+        }
+        window = window->nextNode;
+    }
+
+    return false;
+}
+void finaleAttendence(tList * list) {
+    while (hasAttendence(list))
+    {
+        tNode * window = list->initialNode;
+
+        while (window != NULL)
+        {
+            if (window->customer != NULL &&
+                window->customer->timeAttendence < window->timeAttendence) {
+
+                window->customer = NULL;
+                window->timeAttendence = 0;
+                
+                printf("\nGUICHÊS EM ATENDIMENTO");
+                printList(*list);   
+                printf("\n\n");
+            } else {
+                window->timeAttendence++;
+            }
+            window = window->nextNode;
+        }
+    }
+}
 
 void attendance(tLine * lineCustomers, tList * listServiceWindow) {
     orderAttendance(lineCustomers);
@@ -123,7 +149,7 @@ void attendance(tLine * lineCustomers, tList * listServiceWindow) {
         }
 
         if (window->content >= 0) {
-            window->timeAttendence = getTime();
+            window->timeAttendence++;
         } else {
             window->timeAttendence = 0;
         }

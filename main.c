@@ -32,17 +32,23 @@ int main(void) {
 
     buildScenario(lineCustomers, listServiceWindow, SIZE_LINE_CUSTOMERS, SIZE_LIST_SERVICE_WINDOWS);
 
-    resetTime();
-    while (lineCustomers != NULL && lineCustomers->first != NULL && lineCustomers->amount > 0)
+    do
     {
         printf("\n============================RODADA DE ATENDIMENTO============================\n");
         roundAttendance(lineCustomers, listServiceWindow);
         clearWindows(listServiceWindow);
         
         int window = sortByRange(SIZE_LIST_SERVICE_WINDOWS, 1);
-        printf("\nBOTÃO DO PÂNICO PARA O GUICHÊ: %d\n", window);
 
+        printf("\nBOTÃO DO PÂNICO PARA O GUICHÊ: %d\n", window);
         blockWindow(listServiceWindow, window);
+    } 
+    while (lineCustomers != NULL && lineCustomers->first != NULL &&
+        lineCustomers->amount >= 0);
+
+    if (lineCustomers->amount < 0 && hasAttendence(listServiceWindow)) {
+        printf("\nESVAZIANDO CAIXAS\n");
+        finaleAttendence(listServiceWindow);
     }
     
 }
