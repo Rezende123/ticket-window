@@ -78,6 +78,8 @@ void printList(tList list) {
     tNode * node = list.initialNode;
     int count = 1;
 
+    printf("|SENHA\t|GUICHÊ\t|TEMPO\t|STATUS\n");
+
     while (node != NULL)
     {
         int customerTicket = 0;
@@ -88,7 +90,7 @@ void printList(tList list) {
 
         char* status = (node->content < 0) ? "CLOSE" : "OPEN";
 
-        printf("[%d]\t[%d]\t[%d]- [%s]\n", customerTicket, node->content, node->timeAttendence, status);
+        printf("[%d]\t[%d]\t[%d]\t[%s]\n", customerTicket, node->content, node->timeAttendence, status);
         node = node->nextNode;
         count++;
     }   
@@ -136,11 +138,13 @@ void printLine(tLine line) {
     tNode * node = line.first;
     int count = 1;
 
+    printf("|CLASSE\t|POS.\t|SENHA\n");
+
     while (node != NULL)
     {
         char typeAttendence = rateAttendence(node);
         
-        printf("[%c]\t[%d]\t- %d\n", typeAttendence, count, node->content);
+        printf("[%c]\t[%d]\t[%d]\n", typeAttendence, count, node->content);
         node = node->nextNode;
         count++;
     }
