@@ -1,4 +1,13 @@
-ticket-window
+# EXECUÇÃO
+Basta rodar os comandos:
+* *make*
+* *./main* 
+
+# REGRAS CHAVE
+Para determinar os clientes prioritários usamos um sorteio, com chance de 20% de acerto, esse tipo de cliente tem a senha com dois dígitos e pela letra [P].
+Os tipos de clientes são representados pelas letras [C], [N] e [S].
+O tempo é contado a cada rodada de atendimento, a quantidade de minutos é sorteada em uma escala de 1 - 5.
+No botão do pânico, é sorteado um guichê que será suspenso na próxima rodada, caso esteja vazio na mesma.
 
 # ARQUIVOS
 As operações básicas dos TADs utilizados na aplicação foram colocadas no arquivo [model.c](./model.c), enquanto as estruturas ficaram no [model.h]((./model.h)). O responsável por manipular a fila e os clientes é o arquivo [ticket.c](./ticket.c), onde consta todas as regras de negócio do sistema.
